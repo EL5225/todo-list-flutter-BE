@@ -14,8 +14,6 @@ app.get("/", (c) => {
 
 app.route("/api/v1/todos", todo);
 
-app.use;
-
 app.notFound((c) => {
   return c.json({ message: "Not Found" }, 404);
 });
