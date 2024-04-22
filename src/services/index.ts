@@ -18,6 +18,9 @@ todo.get("/", async (c) => {
     where: {
       is_deleted: false,
     },
+    orderBy: {
+      created_at: "desc",
+    },
   });
 
   if (getTodos.length === 0) {
@@ -68,12 +71,12 @@ todo.get("/:id/complete", async (c) => {
       id,
     },
     data: {
-      is_done: true,
+      is_done: getTodo.is_done ? false : true,
     },
   });
 
   return c.json<TPublicResponse>({
-    message: "Todo completed successfully",
+    message: "Todo status changed successfully",
   });
 });
 
